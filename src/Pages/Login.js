@@ -146,7 +146,13 @@ const Login = ()=>{
       })
       satUserValue(true)
       toast.success("Login Success")
-      navigate("/user/dashbord")
+      console.log(payload.username)
+      if(payload.username==="Abhishek@23"){
+        navigate("/user/admin-dashbord")
+      }else{
+        navigate("/user/dashbord")
+      }
+      
     }).catch(error=>{
       console.log(error)
       if(error.response.status==400 || error.response.status==404){
@@ -230,14 +236,14 @@ const Login = ()=>{
             <Input.Password placeholder="Type your password" />
           </Form.Item>
 
-          <Container className="text-center">
+         
           <Form.Item   >
-            <Button block type="primary" htmlType="submit" >
+           <Button className="mb-3" style={{backgroundColor:"#08D9D6 ",width:"100%",border:0,color:"white"}} htmlType="submit">
               Login
             </Button>
             
           </Form.Item>
-          </Container>
+         
         </Form>
           </CardBody>
 

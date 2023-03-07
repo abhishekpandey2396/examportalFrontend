@@ -348,7 +348,9 @@ function Signup () {
       }
         //call server api to sent data
         signUp(payload).then((resp)=>{
+          console.log("hi")
           console.log(resp)
+          
           console.log("Success log")
           toast.success("User Registered Successfully!!")
           navigate("/Login")

@@ -5,8 +5,11 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
+import About from './Pages/About';
 import Privateroute from './Pages/privateroute';
 import Userdashbord from './Pages/userdashbord';
+import Admindashbord from './Pages/Admin/Admindashbord';
+
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { createContext, useState } from 'react';
@@ -28,9 +31,10 @@ const [userValue,satUserValue] = useState(islogin);
     <Route path="/" element={<Home/>}/>
     <Route path="/Login" element={<Login/>}/>
     <Route path="/signup" element={<Signup/>}/>
-    <Route path="/About" element={<Signup/>}/>
+    <Route path="/About" element={<About/>}/>
 
     <Route path="/user" element={<Privateroute/>} >
+    <Route path='admin-dashbord' element={<Admindashbord/>}/>
     <Route path='dashbord' element={<Userdashbord/>} />
     </Route>
     

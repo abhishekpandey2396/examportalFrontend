@@ -15,8 +15,7 @@ import { MyContext } from '../App';
 
 function CustomNavbar() {
 
-  
-  
+
   let [userValue,satUserValue] = useContext(MyContext);
 
 
