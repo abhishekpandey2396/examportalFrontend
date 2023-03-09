@@ -5,32 +5,32 @@ import { MdQuiz, MdQueue } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
-const Sidebar = ({ children }) => {
+const UserSidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
     {
-      path: "/AdminProfile",
+      path: "/UserProfile",
       name: "Profile",
       icon: <FaUserAlt />,
     },
     {
-      path: "/AdminCategories",
-      name: "Categories",
+      path: "/UserCurrentQuiz",
+      name: "currentQuiz",
       icon: <TbLayoutGrid />,
     },
     {
-      path: "/adminAddCategory",
+      path: "",
       name: "Add Category",
       icon: <TbLayoutGridAdd />,
     },
     {
-      path: "/adminQuizzes",
+      path: "",
       name: "Quizzes",
       icon: <MdQuiz />,
     },
     {
-      path: "/adminAddQuiz",
+      path: "",
       name: "Add Quiz",
       icon: <MdQueue />,
     },
@@ -71,4 +71,4 @@ const Sidebar = ({ children }) => {
   );
 };
 
-export default Sidebar;
+export default UserSidebar;

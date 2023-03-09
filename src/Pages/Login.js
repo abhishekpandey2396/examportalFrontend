@@ -148,9 +148,9 @@ const Login = ()=>{
       toast.success("Login Success")
       console.log(payload.username)
       if(payload.username==="Abhishek@23"){
-        navigate("/user/admin-dashbord")
+        navigate("/admin-dashbord")
       }else{
-        navigate("/user/dashbord")
+        navigate("/Userdashbord")
       }
       
     }).catch(error=>{

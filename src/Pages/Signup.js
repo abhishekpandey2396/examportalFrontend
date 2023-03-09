@@ -347,10 +347,9 @@ function Signup () {
           dob:birthDate
       }
         //call server api to sent data
-        signUp(payload).then((resp)=>{
+        signUp(payload).then((response)=>{
           console.log("hi")
-          console.log(resp)
-          
+          console.log(response)
           console.log("Success log")
           toast.success("User Registered Successfully!!")
           navigate("/Login")

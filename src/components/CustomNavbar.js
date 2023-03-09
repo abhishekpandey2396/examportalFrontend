@@ -1,4 +1,4 @@
-import {NavLink as ReactLink} from 'react-router-dom';
+import {Navigate, NavLink as ReactLink} from 'react-router-dom';
 import { NavLink } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -11,14 +11,13 @@ import { getCurrentUser, isLoggedIn } from '../auth';
 import { NavItem } from 'react-bootstrap';
 import { useContext } from 'react';
 import { MyContext } from '../App';
-
+import { useNavigate } from 'react-router-dom';
 
 function CustomNavbar() {
-
+ const navigate = useNavigate();
 
   let [userValue,satUserValue] = useContext(MyContext);
-
-
+  
   const[login,setLogin]=useState(false);
   const[user,setUser]=useState(null);
 
@@ -32,6 +31,7 @@ function CustomNavbar() {
   const logouthandler = ()=>{
     localStorage.removeItem("data");
     satUserValue(false)
+    navigate('/')
   }
 
   return (
