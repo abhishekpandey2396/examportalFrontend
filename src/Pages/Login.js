@@ -110,13 +110,13 @@ import {toast} from 'react-toastify';
 import { loginUser } from "../services/user-service";
 import { doLogin } from "../auth";
 import { useContext } from "react";
-import { MyContext } from "../App";
 import { useNavigate } from "react-router";
+import userContext from "../context/userContext";
 const Login = ()=>{
 
   const navigate=useNavigate();
 
-  let [userValue,satUserValue] = useContext(MyContext);
+  const userContxtData = useContext(userContext);
 
   const [loginDetails,setLoginDetails] = useState ({
     username:"",
@@ -144,7 +144,11 @@ const Login = ()=>{
       doLogin(data,()=>{
         console.log("Login details is stored to Localstorage")
       })
-      satUserValue(true)
+      userContxtData.setUser({
+        data: data.user,
+        login: true,
+      });
+      console.log(data)
       toast.success("Login Success")
       console.log(payload.username)
       if(payload.username==="Abhishek@23"){

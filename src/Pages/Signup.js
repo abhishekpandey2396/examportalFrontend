@@ -303,7 +303,7 @@
 
 import { Card, CardBody, CardHeader, Col, Container,Row } from "reactstrap";
 import Base from "../components/Base";
-import { Form, Button, Checkbox, DatePicker, Input, Select, Space, message } from "antd";
+import { Form, Button, Checkbox, DatePicker, Input } from "antd";
 import { useState } from "react";
 import { signUp } from "../services/user-service";
 import {toast} from 'react-toastify';

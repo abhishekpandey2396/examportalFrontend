@@ -1,4 +1,4 @@
-import {Navigate, NavLink as ReactLink} from 'react-router-dom';
+import { NavLink as ReactLink} from 'react-router-dom';
 import { NavLink } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -7,16 +7,17 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useEffect, useState } from 'react';
-import { getCurrentUser, isLoggedIn } from '../auth';
+import { doLogout, getCurrentUser, isLoggedIn } from '../auth';
 import { NavItem } from 'react-bootstrap';
 import { useContext } from 'react';
-import { MyContext } from '../App';
+
 import { useNavigate } from 'react-router-dom';
+import userContext from '../context/userContext';
 
 function CustomNavbar() {
  const navigate = useNavigate();
 
-  let [userValue,satUserValue] = useContext(MyContext);
+ const userContextData = useContext(userContext)
   
   const[login,setLogin]=useState(false);
   const[user,setUser]=useState(null);
@@ -26,12 +27,17 @@ function CustomNavbar() {
    setLogin(isLoggedIn())
    setUser(getCurrentUser())
 
-  })
+  },[login])
 
   const logouthandler = ()=>{
-    localStorage.removeItem("data");
-    satUserValue(false)
+    doLogout( () => {
+    setLogin(false)
+    userContextData.setUser({
+        data: null,
+        login: false
+    })
     navigate('/')
+   })
   }
 
   return (
@@ -63,7 +69,7 @@ function CustomNavbar() {
             <NavItem className='d-flex'>
               
               {
-                userValue &&(
+                login &&(
                   <>
                 
                     <NavLink onClick={logouthandler} >Logout</NavLink>
@@ -74,7 +80,7 @@ function CustomNavbar() {
               } 
 
               {
-                !userValue &&(
+                !login &&(
                   <>
                  
                   <NavLink tag={ReactLink} to="/Login">Login</NavLink>
